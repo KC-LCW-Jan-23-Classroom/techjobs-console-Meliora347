@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +11,7 @@ public class TechJobs {
 
     static Scanner in = new Scanner(System.in);
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
@@ -58,7 +59,7 @@ public class TechJobs {
                 String searchField = getUserSelection("Search by:", columnChoices);
 
                 // What is their search term?
-                System.out.println("\nSearch term:");
+                System.out.print("\nSearch term:\n");
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
@@ -112,14 +113,27 @@ public class TechJobs {
                 validChoice = true;
             }
 
-        } while(!validChoice);
+        } while (!validChoice);
 
         return choiceKeys[choiceIdx];
     }
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
-
-        System.out.println("printJobs is not implemented yet");
+        if (someJobs.isEmpty()) {
+            System.out.print("No Results");
+            return;
+        } else {
+            someJobs.stream().forEach(
+                    job -> {
+                        System.out.println("\n*****");
+                        System.out.println("position type: " + job.get("position type"));
+                        System.out.println("name: " + job.get("name"));
+                        System.out.println("employer: " + job.get("employer"));
+                        System.out.println("location: " + job.get("location"));
+                        System.out.println("core competency: " + job.get("core competency"));
+                        System.out.println("*****");
+                    });
+        }
     }
 }
