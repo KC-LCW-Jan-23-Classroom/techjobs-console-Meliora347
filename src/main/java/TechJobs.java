@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -58,7 +59,7 @@ public class TechJobs {
                 String searchField = getUserSelection("Search by:", columnChoices);
 
                 // What is their search term?
-                System.out.println("\nSearch term:");
+                System.out.print("\nSearch term:\n");
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
@@ -125,8 +126,7 @@ public class TechJobs {
         } else {
             someJobs.stream().forEach(
                     job -> {
-                        System.out.println("\n");
-                        System.out.println("*****");
+                        System.out.println("\n*****");
                         System.out.println("position type: " + job.get("position type"));
                         System.out.println("name: " + job.get("name"));
                         System.out.println("employer: " + job.get("employer"));
